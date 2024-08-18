@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# NewsApp 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Created a responsive web application NewsApp with <b>React.js</b> and <b>NEWSAPI</b> which show all the top headlines news from selected country's sources. The user will select the country on the first page. The NewsApp also provide category-wise news. You can search all the news of a particular keyword with search. This web application also has a previous and next button to fetch more news from <b>NEWSAPI</b>. This NewsApp web application also give freedom to user to choose their own theme.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://github.com/chhavinath-bit/NewsApp/assets/75269954/3395bf8c-ea3a-4d9f-a039-0f3dd678f0e0
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## How to install and run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+step-1: Install Node.js on your system [node.js](https://nodejs.org/en/download). You can check your version by simply opening the terminal and writing node --version
+<br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+step-2: Install Microsoft Visual Studio code on your system [vs code](https://code.visualstudio.com/download)
+<br>
+step-3: Make a new directory on your computer and download the above code by clicking on the code and downloading it as a zip file 
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+step-4: Go to folder and open it with vs code
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Screenshot (95)](https://github.com/chhavinath-bit/NewsApp/assets/75269954/1d3ccb19-1433-4c5a-9659-36537639352c)
+![Screenshot (96)](https://github.com/chhavinath-bit/NewsApp/assets/75269954/dbc96fe6-3729-4747-b2f1-e89ea66e0a4b)
+<br>
 
-## Learn More
+step-5: Open a new terminal in vs code and write <b>npm I</b> in your terminal 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Screenshot (101)](https://github.com/chhavinath-bit/NewsApp/assets/75269954/8a3bd920-2f69-461f-a7e9-6e12806eb4c3)
+![Screenshot (102)](https://github.com/chhavinath-bit/NewsApp/assets/75269954/91b9e9ac-558e-4b57-82d1-9b3d1172e9fc)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br>
+step-6: Go to [NewsAPI](https://newsapi.org/) and make a account. Open pricing and select Start with Developer to get you a free API key
 
-### Code Splitting
+![Screenshot (97)](https://github.com/chhavinath-bit/NewsApp/assets/75269954/2d62a79b-86f7-4817-b66d-de164b1fef6e)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+step-7: Open Microsoft Visual Studio code and create a new file with the name .env.local
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Screenshot (98)](https://github.com/chhavinath-bit/NewsApp/assets/75269954/8f311974-1e8e-4f86-8f54-fa2f109d8c56)
+<br> 
+Make a variable with the name REACT_APP_OUR_SECRET_API
+![Screenshot (99)](https://github.com/chhavinath-bit/NewsApp/assets/75269954/9222a079-9aaf-4e9e-baff-8fca7be213c7)
+ 
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+step-8: Open the terminal in vs code and write npm start and open (localhost:3000)
