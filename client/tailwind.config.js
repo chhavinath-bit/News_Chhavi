@@ -5,14 +5,21 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        nav_h: "7vh",
-        side_block: "10vh",
+        profile_image_h: "6vh",
+        card_block: "70vh",
         left_height: "93vh",
         "11/12": "91.666667%",
         "1/12": "8.333333%",
-         "1/20":"5%",
+        margin_in_Card: "9%",
+        Image_in_Card: "45%",
+        Contentent_in_Card: "35%",
+        profile_image_onNews: "5vh",
       },
-     
+      width: {
+        profile_image_w: "6vh",
+        card_width: "93%",
+        profile_image_onNews: "5vh",
+      },
     },
   },
   plugins: [],
