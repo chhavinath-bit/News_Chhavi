@@ -10,6 +10,7 @@ const port = 5000;
 app.use("/api/news", require("./Routes/news"));
 app.use("/api/profile", require("./Routes/profile"));
 app.use("/api/auth", require("./Routes/authetication"));
+app.use("/api/getnews", require("./Routes/getNews"));
 
 app.listen(port, () => {
   console.log(`app server is listening on ${port}`);

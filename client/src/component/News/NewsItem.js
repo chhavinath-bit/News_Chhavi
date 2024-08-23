@@ -1,5 +1,5 @@
 import React from 'react'
-import profile_blank from '../profile_blank.png'
+import profile_blank from '../../profile_blank.png'
 import { Link } from 'react-router-dom'
 import { BiSolidUpvote } from "react-icons/bi";
 import { MdReportProblem } from "react-icons/md";
@@ -7,7 +7,7 @@ import { BiUpvote } from "react-icons/bi";
 
 export default function NewsItem() {
   return (
-    <div className='h-full w-card_width bg-black rounded-lg shadow-2xl text-white box-border'>
+    <div className='h-full w-card_width bg-[#021859] border border-[#021E73] rounded-lg shadow-2xl text-white box-border '>
     <div className="w-full h-margin_in_Card box-border flex items-center px-2">
      <img className='aspect-square w-1/12 rounded-full' src={profile_blank}/>
      <button className='h-full w-11/12 text-start ml-3'>

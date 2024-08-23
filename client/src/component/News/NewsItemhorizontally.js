@@ -1,12 +1,12 @@
 import React from 'react'
-import profile_blank from '../profile_blank.png' 
+import profile_blank from '../../profile_blank.png' 
 import { Link } from 'react-router-dom'
 import { BiSolidUpvote } from "react-icons/bi";
 import { MdReportProblem } from "react-icons/md";
 import { BiUpvote } from "react-icons/bi";
 export default function NewsItemhorizontally({index, len}) {
   return (
-    <div className={`w-2/3 h-2/5 flex-shrink-0 bg-black flex flex-col items-center ${index===0 && "rounded-t-xl"} ${index===len-1 && "rounded-b-xl"}`}>
+    <div className={`w-2/3 h-2/5 flex-shrink-0 bg-[#021859] border-white border-l border-r flex flex-col items-center ${index===0 && "rounded-t-xl"} ${index===len-1 && "rounded-b-xl"}`}>
         {index!==0 && <div className='h-[1%] w-4/5 bg-white'></div>}
         <div className='w-full h-[99%] box-border p-2 flex text-white' >
             <img className='w-1/3 h-full' src={profile_blank}/>

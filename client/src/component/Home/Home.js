@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { NewsContext } from "../Context/newscontext";
+import { NewsContext } from "../../Context/newscontext";
 import Countries from "./Country";
-import img from "../home_background_2.jpg"
+import img from "../../home_background_2.jpg"
 import { Navigate } from "react-router-dom";
 
 export default function Home() {
