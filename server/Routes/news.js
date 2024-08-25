@@ -54,7 +54,7 @@ router.delete("/deletenews/:id", checkAuthenticity, async (req, res) => {
       return res.status(401).send("unauthorized");
     }
     news = await News.findByIdAndDelete(req.body.postid);
-    res.status(200).json({ sucess: "audio deleted" });
+    res.status(200).json({ sucess: "News deleted" });
     return;
   } catch (err) {
     console.error(err.message);

@@ -10,7 +10,7 @@ export default function EditProfile() {
   const Password_Modal= useRef("");    
   const DeleteProfile_Modal= useRef("") 
   return (
-    <div className="h-11/12 w-full bg-cover flex justify-center overflow-y-auto box-border py-5">
+    <div className="h-11/12 w-full bg-cover flex justify-center overflow-y-auto box-border py-5 text-base">
     <div className='w-2/3 h-[90vh] bg-white box-border flex rounded-xl'>
     <div className='flex flex-col w-1/4'>
     <button className='w-full h-[12%] border-r border-b border-[#010326]' onClick={()=>{

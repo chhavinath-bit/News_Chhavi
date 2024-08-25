@@ -95,6 +95,24 @@ try{
   }
   
 });
+router.delete("/deleteUser/:id", async (req, res) => {
+  
+  try {
+    let user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).send("Not Found");
+    }
+    
+    user = await User.findByIdAndDelete(req.params.id);
+    console.log(user)
+    res.status(200).json({ sucess: "audio deleted" });
+    return;
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ errors: "Internal Server Error" });
+  }
+  });
 
 router.put("/unfollows", async (req, res) => {
 try{ 
