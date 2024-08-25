@@ -22,7 +22,7 @@ export default function UploadImage() {
    
     if (!profileImg) {
       errmsg.current.style.display = "flex";
-      errmsg.current.innerText = "Please Select a photo";
+      errmsg.current.innerText = "Please upload a photo";
       setTimeout(() => {
         errmsg.current.style.display = "none";
         errmsg.current.innerText = "";
@@ -40,13 +40,13 @@ export default function UploadImage() {
       const snapshot = await uploadBytes(storageRef, profileImg, metadata);
       const downloadURL = await getDownloadURL(snapshot.ref);
       console.log(downloadURL);
-      const data = await fetch(UpdateProfileAPI, {
+      const data = await fetch(`${UpdateProfileAPI}/${localStorage.getItem("id")}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Token": localStorage.getItem("Token"),
         },
         body: JSON.stringify({
-          _id: localStorage.getItem("id"),
           profilePhoto: downloadURL,
         }),
       });
@@ -55,7 +55,7 @@ export default function UploadImage() {
       if (data.status === 200) {
         localStorage.setItem("profilePhoto", downloadURL);
         setProfileurl(downloadURL);
-        console.log(toTheHome.current.click())
+       toTheHome.current.click()
         return;
       }
       
@@ -66,7 +66,12 @@ export default function UploadImage() {
         errmsg.current.innerText = "";
       }, 3000);
     } catch (err) {
-      console.log("err", err);
+            errmsg.current.style.display="flex"
+            errmsg.current.innerText= "Unable to reach server"
+            setTimeout(()=>{
+              errmsg.current.style.display="none"
+              errmsg.current.innerText= ""
+            }, 3000)
     }
   };
   return (
@@ -78,7 +83,7 @@ export default function UploadImage() {
       <div className="w-1/3  rounded-xl bg-[#021859] border border-[#021E73] flex flex-col items-center flex-shrink-0 p-4">
       <div className="w-full flex justify-end">
       <button  className="text-yellow-50 w-1/5">
-        <Link ref={toTheHome} to={`/News/${country}`}>
+        <Link ref={toTheHome} to={`/News/${country}`} state={{Country:country, Category:'none'}}>
           <RxCross2 />
         </Link>
       </button>

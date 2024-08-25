@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-
-const url =
-  "mongodb+srv://noonekumar242:Prakash3251@newsappdatabase.isbif.mongodb.net/?retryWrites=true&w=majority&appName=NewsAppDatabase";
+const url =process.env.MONGO_ATLAS_URL;
 const connectToDB = async (err) => {
   if (err) {
     console.log(err);

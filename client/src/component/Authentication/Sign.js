@@ -18,12 +18,12 @@ export default function Sign() {
   });
   const errmsg = useRef("");
   const OnChangeInp = (e) => {
-    console.log(e.target.value);
+  
     setCredentials({
       ...credentials,
       [e.target.name]: e.target.value,
     });
-    console.log(credentials)
+   
   };
  
   const SubmitCredential = async () => {
@@ -38,6 +38,7 @@ export default function Sign() {
       return;
     }
     if (
+      credentials.email.length<11 ||
       credentials.email.substring(credentials.email.length - 10) !==
       "@gmail.com"
     ) {
@@ -85,7 +86,6 @@ export default function Sign() {
       }, 3000);
       return;
     }
-    console.log(credentials)
     try {
       const data = await fetch(registerAPI, {
         method: "POST",
@@ -111,17 +111,21 @@ export default function Sign() {
       }, 3000)
       
     } catch (err) {
-      console.log("err", err);
+      errmsg.current.style.display="flex"
+      errmsg.current.innerText= "Unable to reach server"
+      setTimeout(()=>{
+        errmsg.current.style.display="none"
+        errmsg.current.innerText= ""
+      }, 3000)
     }
-    console.log(credentials);
+    
   };
   return (
     <div
       className="h-11/12 w-full bg-cover flex flex-col items-center overflow-y-auto box-border py-5 "
-      style={{ backgroundImage: `url(${img})` }}
     >
       <div className="w-1/3 rounded-xl bg-[#021859] border border-[#021E73] flex flex-col items-center flex-shrink-0">
-        <label className="w-3/4 mt-4 text-yellow-50">User Name</label>
+        <label className="w-3/4 mt-4 text-yellow-50"> Name</label>
         <input
           className="w-4/5 mt-1 h-[7.66vh] rounded-3xl pl-4 box-border"
           type="text"
@@ -156,7 +160,7 @@ export default function Sign() {
         ></input>
         <label className="w-3/4 mt-4 text-yellow-50">Gender</label>
         <div className="w-4/5 h-[7.66vh] mt-1 rounded-3xl pl-4 box-border flex justify-around items-center">
-          <label className="text-yellow-50">Male</label>
+          
           <input
             name="Gender"
             type="radio"
@@ -164,7 +168,7 @@ export default function Sign() {
             checked={credentials.Gender === "Male"}
             onChange={OnChangeInp}
           ></input>
-          <label className="text-yellow-50">Female</label>
+          <label className="text-yellow-50">Male</label>
           <input
             name="Gender"
             type="radio"
@@ -172,7 +176,8 @@ export default function Sign() {
             checked={credentials.Gender === "Female"}
             onChange={OnChangeInp}
           ></input>
-          <label className="text-yellow-50">Other</label>
+          <label className="text-yellow-50">Female</label>
+          
           <input
             name="Gender"
             type="radio"
@@ -180,6 +185,7 @@ export default function Sign() {
             checked={credentials.Gender === "Other"}
             onChange={OnChangeInp}
           ></input>
+          <label className="text-yellow-50">Other</label>
         </div>
         <label className="w-3/4 mt-4 text-yellow-50">Date of Birth</label>
         <input
@@ -192,9 +198,9 @@ export default function Sign() {
         {isLogin && <Navigate to={`/auth/signup/uploadphoto`} />}
         <button
           onClick={SubmitCredential}
-          className="bg-yellow-100 text-[#010326] h-[12%] w-[35%] rounded-3xl mt-5"
+          className="bg-yellow-100 text-[#010326] h-[8%] w-[35%] rounded-3xl mt-5"
         >
-          Login
+          Sign Up
         </button>
        
         <p className="mt-3 text-red-600 text-xl italic hidden" ref={errmsg}>
@@ -203,10 +209,10 @@ export default function Sign() {
         <button className="w-4/5 mt-3 mb-3 ">
           <Link
             className="text-yellow-50 justify-center flex items-center"
-            to="/auth/signup"
+            to="/auth/login"
           >
             {" "}
-            Don't have account? Sign Up{" "}
+            Account already exists? log in{" "}
             <FaArrowRightLong className="ml-1" color="rgb(254 252 232)" />{" "}
           </Link>
         </button>

@@ -8,10 +8,15 @@ const newsSchema= new Schema({
   },
   UserProfileImg:{
     type:String,
-    default:""
+    require: true
+  },
+  userName:{
+    type:String,
+    required:true
   },
   news_Image:  {
-    type: String,
+    type: [String],
+    required:true
   },
   heading:{
     type: String,

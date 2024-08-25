@@ -1,11 +1,13 @@
 const express= require("express")
 const router= express.Router()
 const News= require('../Models/NewsSchema')
+const FetchUser = require("../MIddleWare/FetchUser")
 
 router.get('/fetchAllNews/:country/:Category', async (req,res)=>{
+   
     if(req.params.Category!=="none"){
         try{
-            const news= await News.find({Country:req.params.type, Category:req.params.Category})
+            const news= await News.find({Country:req.params.country, Category:req.params.Category})
             res.status(200).json(news);
             return;}catch(err){
                console.error(err.message);
@@ -22,7 +24,7 @@ router.get('/fetchAllNews/:country/:Category', async (req,res)=>{
          }c
     }
     try{
-        const news= await News.find({Country:req.params.type})
+        const news= await News.find({Country:req.params.country})
         res.status(200).json(news)
     }catch(err){
         console.error(err.message);
@@ -30,9 +32,15 @@ router.get('/fetchAllNews/:country/:Category', async (req,res)=>{
     } 
 })
 
-router.get('/ForYou', (req,res)=>{
-    console.log(req.params)
-    res.send("for u");
+router.get('/ForYou/:id', FetchUser, async (req,res)=>{
+
+    const two_dimension_news= await Promise.all(
+        req.user.following.map(async (_id) => {
+            return await News.find({ user: _id });
+        })
+    );
+    const NewsForYou= two_dimension_news.flat();
+    res.status(200).json(NewsForYou)
 
 })
 router.get('/query', (req,res)=>{

@@ -2,45 +2,88 @@ const express = require("express");
 const router = express.Router();
 const FetchUser = require("../MIddleWare/FetchUser");
 const News = require("../Models/NewsSchema");
-router.post("/postnews", FetchUser, async (req, res) => {
-  const { heading, Country, Content, tag } = req.body;
+const checkAuthenticity = require("../MIddleWare/checkAuthenticity");
+router.post("/postnews/:id", FetchUser, async (req, res) => {
+  const { heading, Country, Content, Category, news_Image } = req.body;
   const newPost = new News({
     heading,
     Country,
     Content,
-    tag,
+    Category,
     user: req.user._id,
+    userName: req.user.name,
+    UserProfileImg: req.user.profilePhoto,
+    news_Image,
   });
   const saveNews = await newPost.save();
-  console.log(saveNews);
-  res.send(200);
+  res.status(200).json(saveNews);
 });
-router.put("/updatenews/:id", (req, res) => {
-  console.log(req.params);
-  res.send("Update");
-});
-router.delete("/deletenews/:id", async (req, res) => {
+router.put("/updatenews/:id",checkAuthenticity, async (req, res) => {
   try {
-    let audio = await News.findById(req.params.id);
+    let updatedNews = await News.findById(req.body.postid);
 
-    if (!audio) {
+    if (!updatedNews) {
       return res.status(404).send("Not Found");
     }
-    let des = audio.description;
-    // if (audio.user.toString() !== req.user.id) {
-    //   return res.status(401).send("unauthorized");
-    // }
-
-    audio = await News.findByIdAndDelete(req.params.id);
-    res.status(200).json({ sucess: "News Post Deleted" });
+    
+    if (updatedNews.user.toString() !== req.params.id) {
+      return res.status(401).send("unauthorized");
+    }
+    updatedNews = await News.findByIdAndUpdate(req.body.postid,
+      { $set: req.body.newsData},
+      { new: true }
+    );
+    res.status(200).json(updatedNews);
+    return;
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ errors: "Internal Server Error" });
   }
 });
-router.post("/likes/:id", () => {
-  console.log(req.params);
-  res.send("your category");
+router.delete("/deletenews/:id", checkAuthenticity, async (req, res) => {
+  
+  
+  try {
+    let news = await News.findById(req.body.postid);
+
+    if (!news) {
+      return res.status(404).send("Not Found");
+    }
+    
+    if (news.user.toString() !== req.params.id) {
+      return res.status(401).send("unauthorized");
+    }
+    news = await News.findByIdAndDelete(req.body.postid);
+    res.status(200).json({ sucess: "audio deleted" });
+    return;
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ errors: "Internal Server Error" });
+  }
+});
+router.put("/like", async (req, res) => {
+  
+  try {
+    const updatedPost = await News.findByIdAndUpdate(
+      req.body.postId ,
+      { $push: { likes: req.body.userid } },
+      { new: true }
+    );
+    res.status(200).json(updatedPost);
+  } catch (err) {
+    res.status(500).json({ errors: "Internal Server Error" });
+  }
+});
+router.put("/dislike", async (req, res) => {
+  try {
+    const updatedPost = await News.findByIdAndUpdate( req.body.postId ,
+      { $pull: { likes: req.body.userid } },
+      { new: true }
+    );
+    res.status(200).json(updatedPost);
+  } catch (err) {
+    res.status(500).json({ errors: "Internal Server Error" });
+  }
 });
 
 module.exports = router;

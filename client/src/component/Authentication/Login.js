@@ -55,14 +55,19 @@ export default function Login() {
       }, 3000)
       
      }catch(err){
-       console.log("err", err)
+      errmsg.current.style.display="flex"
+      errmsg.current.innerText= "Unable to reach server"
+      setTimeout(()=>{
+        errmsg.current.style.display="none"
+        errmsg.current.innerText= ""
+      }, 3000)
      }
      console.log(credentials)
   }
   return (
     <div
       className="h-11/12 w-full bg-cover flex justify-center items-center overflow-y-auto"
-      style={{ backgroundImage: `url(${img})` }}
+    
     >
       <div className="w-1/3 h-4/5 overflow-y-auto rounded-xl bg-[#021859] border border-[#021E73] flex flex-col items-center">
        <label className="w-3/4 mt-5 text-white">Email</label>
@@ -81,7 +86,7 @@ export default function Login() {
           name="password"
           onChange={OnChangeInp}
         ></input>
-        {isLogin && <Navigate to={`/News/${country}`}/>}
+        {isLogin && <Navigate to={`/News/${country}`} state={{Country:country, Category:'none'}}/>}
         <button onClick={SubmitCredential} className='bg-yellow-100 text-[#010326] h-[12%] w-[35%] rounded-3xl mt-5'>Login</button>
         <p className="mt-3 text-red-600 text-xl italic hidden" ref={errmsg}>  </p>
         <button className="w-4/5 mt-3 "><Link className="text-yellow-50 justify-center flex items-center" to='/auth/signup'> Don't have account? Sign Up <FaArrowRightLong className="ml-1" color="rgb(254 252 232)"/> </Link></button>

@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import img from "./home_background_2.jpg"
 import News from './component/News/News';
 import Login from './component/Authentication/Login'
 import AllUserProfile from './component/Profile/AllUserProfile'
@@ -12,6 +13,7 @@ import Query from './component/News/Query';
 import Navbar from './component/navigation/Navbar';
 import Footer from "./component/navigation/Footer"
 import Home from './component/Home/Home';
+import DetailedPage from './component/News/DetailedPage';
 import ProfilePage from './component/Profile/ProfilePage';
 import { NewsContext } from './Context/newscontext';
 import EditProfile from './component/Profile/EditProfile'
@@ -41,10 +43,10 @@ export default function App(){
      </>,
     },
     {
-      path:`/News/detailedPage/:newsId`,
+      path:`/News/detailedPage`,
       element:<>
       <Navbar/>
-      <News/>
+      <DetailedPage/>
       <Footer/>
      </>,
     },
@@ -131,7 +133,7 @@ export default function App(){
   ]);
   return (
       <NewsState >  
-     <div className="h-screen w-screen bg-[#010326]"  >
+     <div className="h-screen w-screen bg-[#010326]" style={{backgroundImage:`url(${img})`}} >
      <RouterProvider router={router} />
      </div>
      </NewsState>

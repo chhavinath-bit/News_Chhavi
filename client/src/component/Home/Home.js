@@ -21,14 +21,14 @@ export default function Home() {
     
     
   }
- 
+
   
   return(
   
-   <div className="h-11/12 w-full bg-cover flex justify-center items-center overflow-y-auto" style={{backgroundImage:`url(${img})`}}>
+   <div className="h-11/12 w-full bg-cover flex justify-center items-center overflow-y-auto">
      <div className="flex flex-col h-side_block w-1/4">
      
-     <select ref={country_val} className='h-1/2 w-full text-center rounded-none rounded-t-md' id="selectCountry" >
+     <select ref={country_val} className='h-1/2 w-full text-center rounded-none rounded-t-md' >
          {Countries.map((ctry)=> <option className="w-full" key={ctry} value={ctry}>{ctry}</option>
          )}
       </select>

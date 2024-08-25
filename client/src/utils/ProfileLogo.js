@@ -17,15 +17,15 @@ export default function ProfileLogo() {
     <div className='h-full w-1/4 flex items-center justify-around'>
       
      <img src ={profileurl!==""? profileurl : profile_blank} className='aspect-square h-3/4 rounded-full' alt='' onClick={naviagteTOprofile}/> 
-     <div ref={showinMore} className={`fixed flex-col hidden justify-start shadow-2xl p-2 top-14 right-0 box-border rounded-md bg-slate-800`}> 
+     <div ref={showinMore} className={`fixed flex-col hidden justify-start shadow-2xl p-2 top-14 right-0 box-border rounded-md bg-[#021E73] text-yellow-50`}> 
        <button onClick={naviagteTOprofile}>
        <Link to= {'/Profile/User'} state={{id: localStorage.getItem("id")}}>
        My Profile
        </Link>
        </button>
-       <hr></hr>
+       <hr ></hr>
        <button onClick={naviagteTOprofile}>
-       <Link to= {'/chhavi/EditProfile'}>
+       <Link to= {'/User/EditProfile'}>
         Edit Profile
        </Link>
        </button>

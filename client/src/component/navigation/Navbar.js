@@ -5,6 +5,7 @@ import { CiSquarePlus } from "react-icons/ci";
 import ColorWheel from "../../utils/CoolorWheel";
 import ProfileLogo from '../../utils/ProfileLogo';
 import LoginButton from '../../utils/LoginButton'
+import Category from './Category'
 export default function Navbar() {
   const { country, setCountry , setNewsTag, isLogin} = useContext(NewsContext);
   const [currentButton, setCurrentButton] = useState(window.location.pathname);
@@ -13,15 +14,6 @@ export default function Navbar() {
     country === "Select Country" ? "Country" : country,
     "World",
   ];
-  const navigation2 = [
-    
-    "Business",
-    "Entertainment",
-    "Health",
-    "Science",
-    "Sports",
-    "Technology",
-  ];
  
   let ChangeColor=()=>{
     setNewsTag(window.location.pathname)
@@ -29,7 +21,7 @@ export default function Navbar() {
   }
   const mapThevalueTag=(arg)=>{
     if(country !== "Select Country"){ 
-      return <Link to= {`/News/${arg}`} state={{country:country, Category:arg}}>
+      return <Link to= {`/News/${arg}`} state={{Country:country, Category:arg}}>
       {arg}
       </Link>
     }
@@ -41,7 +33,7 @@ export default function Navbar() {
   }
   const mapThevalue=(arg)=>{
     if(country !== "Select Country"){ 
-      return <Link to= {`/News/${arg}`} state={{country:arg, Category:'none'}}>
+      return <Link to= {`/News/${arg}`} state={{Country:arg, Category:'none'}}>
       {arg}
       </Link>
     }
@@ -50,7 +42,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="h-1/12 w-full bg-[#021859] text-white  flex justify-between border-b border-[#021E73]">
+    <div className="h-1/12 w-full bg-[#F1F1F1] text-[#000000]  flex justify-between border-b border-[#021E73]">
       <div className="h-full w-3/4 flex justify-start shadow-2xl items-center">
         <button
           className="mx-2 h-full"
@@ -69,7 +61,7 @@ export default function Navbar() {
         {navigation1.map((val, index) => {
           return (
             <button
-              className={`mx-2 h-full text-base cursor-not-allowed ${(window.location.pathname===`/News/${val}`)? " text-yellow-500":"text-white"}`}
+              className={`mx-2 h-full text-base cursor-not-allowed ${(window.location.pathname===`/News/${val}`)? "text-blue-600":"text-[#000000]"}`}
               disabled={country === "Select Country"}
               key={index}
               onClick={ChangeColor} 
@@ -80,17 +72,17 @@ export default function Navbar() {
           );
         })}
         <button
-              className={`mx-2 h-full text-base cursor-not-allowed ${(window.location.pathname===`/News/following/ForYou`)? "text-yellow-500":"text-white"}`}
+              className={`mx-2 h-full text-base cursor-not-allowed ${(window.location.pathname===`/News/following/ForYou`)? "text-blue-600":"text-[#000000]"}`}
               disabled={country === "Select Country"}
               onClick={ChangeColor} 
             >
             {country !== "Select Country"?<Link to= {`/News/following/ForYou`}>For You</Link>: "For You"}
             </button>
-        <button disabled className="w-px h-2/3 bg-white"></button>
-        {navigation2.map((val, index) => {
+        <button disabled className="w-px h-2/3 bg-[#000000]"></button>
+        {Category.map((val, index) => {
           return (
             <button
-              className={`mx-2 h-full text-base cursor-not-allowed active:text-blue ${(window.location.pathname===`/News/${val}`)? "text-yellow-500":"text-white"}`}
+              className={`mx-2 h-full text-base cursor-not-allowed active:text-blue ${(window.location.pathname===`/News/${val}`)? "text-blue-600":"text-[#000000]"}`}
               disabled={country === "Select Country"}
               key={index}
               onClick={ChangeColor} 
@@ -103,10 +95,10 @@ export default function Navbar() {
       <div className="h-full w-1/4 flex justify-between items-center box-border">
       {isLogin? <button ><Link to="/News/newNews/post" className=" flex items-center" > Post News<CiSquarePlus size={40} />
       </Link>
-      </button> : <button className=" flex items-center" onClick={showLoginButton}> Post News<CiSquarePlus size={40} />
+      </button> : <button className=" flex items-center text-lg" onClick={showLoginButton}> Post News<CiSquarePlus size={40} />
       </button>}
-       {!isLogin && <div ref={signIn} className="fixed w-[12vw] h-[10vh] hidden bg-yellow-100 top-[8.333333vh] right-[14vw] rounded-lg justify-center items-center">
-        <button className="rounded-md w-1/2 bg-yellow-100 text-[#010326] text-sm" onClick={showLoginButton}><Link to="/auth/login">Please log in to continue</Link></button>
+       {!isLogin && <div ref={signIn} className="fixed w-[12vw] h-[10vh] hidden bg-[#010326] border-2 border-[#F1F1F1] top-[8.333333vh] right-[14vw] rounded-lg justify-center items-center">
+        <button className="rounded-md w-1/2 text-[#F1F1F1] text-sm" onClick={showLoginButton}><Link to="/auth/login">Please log in to continue..</Link></button>
        </div>}
        <ColorWheel/> 
        {isLogin?<ProfileLogo/>:<LoginButton/>}
