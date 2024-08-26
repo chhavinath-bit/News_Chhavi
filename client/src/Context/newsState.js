@@ -5,6 +5,7 @@ import { ref, deleteObject } from "firebase/storage";
 import { storage } from "../component/Authentication/FireBase";
 
 export default function NewsState({children}) {
+  //  const [totalNewsTillNow, setTotalNewsTillNow]=useState(0)
     const [country,setCountry]=useState(localStorage.getItem("country")? localStorage.getItem("country"):"Select Country" );
     const [newsTag, setNewsTag]= useState("")
     const [isLogin, setIsLogin]= useState(localStorage.getItem("Token")? true: false)
@@ -43,8 +44,8 @@ export default function NewsState({children}) {
            console.log(err)
        }  
     }
-    const FetchNews= async(Country, Category)=>{
-       const url=FetchAllNews+"/"+Country+"/"+Category
+    const FetchNews= async(Country, Category, pageNumber)=>{
+       const url=FetchAllNews+"/"+Country+"/"+Category+"/"+pageNumber
       try {
         const Profile= await fetch(url, {
          method: 'GET',
@@ -56,13 +57,19 @@ export default function NewsState({children}) {
         })
         const NewsData= await Profile.json()
         console.log("NewsData",NewsData)
-        setNewsArr(NewsData)
+       if(pageNumber!==0) setNewsArr(newsArr.concat(NewsData))
+        else setNewsArr(NewsData)
        
     }catch(err){
         console.log(err)
     }  
     }
     const fetchfollowingNews=async(id)=>{
+      if(!id) {
+        setNewsArr([])
+        return;
+      }
+      
       try {
         const followingNews= await fetch(`${ForYouAPI}/${id}`, {
          method: 'GET',
