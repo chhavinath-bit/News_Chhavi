@@ -5,7 +5,7 @@ import { ref, deleteObject } from "firebase/storage";
 import { storage } from "../component/Authentication/FireBase";
 
 export default function NewsState({children}) {
-  //  const [totalNewsTillNow, setTotalNewsTillNow]=useState(0)
+   const [totalNewsTillNow, setTotalNewsTillNow]=useState(-1)
     const [country,setCountry]=useState(localStorage.getItem("country")? localStorage.getItem("country"):"Select Country" );
     const [newsTag, setNewsTag]= useState("")
     const [isLogin, setIsLogin]= useState(localStorage.getItem("Token")? true: false)
@@ -45,6 +45,7 @@ export default function NewsState({children}) {
        }  
     }
     const FetchNews= async(Country, Category, pageNumber)=>{
+      
        const url=FetchAllNews+"/"+Country+"/"+Category+"/"+pageNumber
       try {
         const Profile= await fetch(url, {
@@ -57,6 +58,7 @@ export default function NewsState({children}) {
         })
         const NewsData= await Profile.json()
         console.log("NewsData",NewsData)
+        setTotalNewsTillNow(NewsData.length)
        if(pageNumber!==0) setNewsArr(newsArr.concat(NewsData))
         else setNewsArr(NewsData)
        
@@ -215,6 +217,7 @@ export default function NewsState({children}) {
       setCountry,
       newsTag,
       setNewsTag,
+      totalNewsTillNow,
       isLogin,
       setIsLogin,
       profileurl,

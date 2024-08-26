@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import React from 'react'
+import loading from '../../loading.gif'
 import { useLocation, Link } from 'react-router-dom';
 import { NewsContext } from "../../Context/newscontext"
 import Searchbar from "../../utils/Searchbar"
 import InfiniteScroll from "react-infinite-scroll-component";
 import NewsItem from "./NewsItem"
 export default function News() {
-  const { newsArr, FetchNews}= useContext(NewsContext);
+  const { newsArr, FetchNews, totalNewsTillNow}= useContext(NewsContext);
   const location= useLocation()
   
   const data= location.state
@@ -14,7 +15,8 @@ export default function News() {
      setPageNumber(pageNumber+1);
      FetchNews(data?data.Country: localStorage.getItem("country"),data? data.Category:"none", pageNumber+1)
      console.log(pageNumber)
-    
+     console.log("total news",totalNewsTillNow)
+     console.log("newsArr length",newsArr.length)
   }
   const [pageNumber, setPageNumber]= useState(0)
   const[query, setQuery]= useState("");
@@ -29,8 +31,11 @@ export default function News() {
           className="w-full flex flex-col items-center overflow-y-hidden"
           dataLength={newsArr.length}
           next={fetchMoreData}
-          hasMore={true}
-          loader={<h4>Loading...</h4>}
+          hasMore={totalNewsTillNow!==0}
+          loader={<div className="text-center">
+            <img style={{ width: "460px" }} src={loading} alt="" />
+            <p >Please wait while fetching news... </p>
+          </div>}
           scrollableTarget="scrollableDiv"
         >
     <div className="w-4/5 flex justify-start box-border flex-wrap flex-shrink-0">
