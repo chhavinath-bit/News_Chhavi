@@ -7,7 +7,7 @@ import Searchbar from "../../utils/Searchbar"
 import InfiniteScroll from "react-infinite-scroll-component";
 import NewsItem from "./NewsItem"
 export default function News() {
-  const { newsArr, FetchNews, totalNewsTillNow}= useContext(NewsContext);
+  const { newsArr, FetchNews, totalNews}= useContext(NewsContext);
   const location= useLocation()
   
   const data= location.state
@@ -15,7 +15,7 @@ export default function News() {
      setPageNumber(pageNumber+1);
      FetchNews(data?data.Country: localStorage.getItem("country"),data? data.Category:"none", pageNumber+1)
      console.log(pageNumber)
-     console.log("total news",totalNewsTillNow)
+     console.log("total news",totalNews)
      console.log("newsArr length",newsArr.length)
   }
   const [pageNumber, setPageNumber]= useState(0)
@@ -31,7 +31,7 @@ export default function News() {
           className="w-full flex flex-col items-center overflow-y-hidden"
           dataLength={newsArr.length}
           next={fetchMoreData}
-          hasMore={totalNewsTillNow!==0}
+          hasMore={totalNews!==newsArr.length}
           loader={<div className="text-center">
             <img style={{ width: "460px" }} src={loading} alt="" />
             <p >Please wait while fetching news... </p>

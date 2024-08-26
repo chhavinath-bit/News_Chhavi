@@ -13,7 +13,11 @@ router.get("/fetchAllNews/:country/:Category/:pageNumber", async (req, res) => {
         .sort({ date: -1 })
         .skip(req.params.pageNumber * 15)
         .limit(15);
-      res.status(200).json(news);
+        const totalNews= await News.countDocuments({
+        Country: req.params.country,
+        Category: req.params.Category,
+      })
+      res.status(200).json({news, totalNews});
       return;
     } catch (err) {
       console.error(err.message);
@@ -26,7 +30,9 @@ router.get("/fetchAllNews/:country/:Category/:pageNumber", async (req, res) => {
         .sort({ date: -1 })
         .skip(req.params.pageNumber * 15)
         .limit(15);
-      res.status(200).json(news);
+        const totalNews= await News.countDocuments({})
+        console.log(totalNews)
+      res.status(200).json({news, totalNews});
       return;
     } catch (err) {
       console.error(err.message);
@@ -39,7 +45,11 @@ router.get("/fetchAllNews/:country/:Category/:pageNumber", async (req, res) => {
       .sort({ date: -1 })
       .skip(req.params.pageNumber * 15)
       .limit(15);
-    res.status(200).json(news);
+      const totalNews= await News.countDocuments({
+        Country: req.params.country
+      })
+      console.log(totalNews)
+    res.status(200).json({news, totalNews});
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ errors: "Internal Server Error" });
