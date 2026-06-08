@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
-const secretKeyPass = "#poe067ahbdhabdhag6bsheNewsAPPWEbAPP";
+const secretKeyPass =  process.env.SECRET_PASS;
 router.post("/createUser", async (req, res) => {
   const { name, profilePhoto, email, password, Gender, DOB } = req.body;
 
