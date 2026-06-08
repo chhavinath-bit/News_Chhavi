@@ -93,9 +93,15 @@ export default function Navbar() {
         })}
       </div>
       <div className="h-full w-1/4 flex justify-between items-center box-border">
+<<<<<<< HEAD
+      {isLogin? <button ><Link to="/News/newNews/post" className=" flex items-center" > Post News<CiSquarePlus size={40} />
+      </Link>
+      </button> : <button className=" flex items-center text-lg" onClick={showLoginButton}> Post News<CiSquarePlus size={40} />
+=======
       {isLogin? <button ><Link to="/News/newNews/post" className=" flex items-center text-base" > Post News<CiSquarePlus size={40} />
       </Link>
       </button> : <button className=" flex items-center text-base" onClick={showLoginButton}> Post News<CiSquarePlus size={40} />
+>>>>>>> master
       </button>}
        {!isLogin && <div ref={signIn} className="fixed w-[12vw] h-[10vh] hidden bg-[#010326] border-2 border-[#F1F1F1] top-[8.333333vh] right-[14vw] rounded-lg justify-center items-center">
         <button className="rounded-md w-1/2 text-[#F1F1F1] text-sm" onClick={showLoginButton}><Link to="/auth/login">Please log in to continue..</Link></button>
