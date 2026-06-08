@@ -69,27 +69,28 @@ export default function Login() {
       className="h-11/12 w-full bg-cover flex justify-center items-center overflow-y-auto"
     
     >
-      <div className="w-1/3 h-4/5 overflow-y-auto rounded-xl bg-[#021859] border border-[#021E73] flex flex-col items-center">
-       <label className="w-3/4 mt-5 text-white">Email</label>
+      <div className="w-1/5 h-max rounded-xl border-2 bg-[#F1F1F1] border-[#021E73] flex flex-col items-center pb-3 text-base">
+      <div className="w-full border-b border-[#021E73] text-lg py-2 px-2 mb-2 font-bold">Login to News</div>
+       <label className="w-3/4 ">Email</label>
         <input
-          className="w-4/5 my-1 h-[10%] rounded-3xl pl-4 box-border"
+          className="w-4/5 mt-1 rounded-3xl pl-4 border border-black"
           type="email"
           value={credentials.email}
           name="email"
           onChange={OnChangeInp}
         ></input>
-        <label className="w-3/4 mt-4 text-white">Password</label>
+        <label className="w-3/4 mt-3">Password</label>
         <input
-          className="w-4/5 h-[10%] my-1 rounded-3xl pl-4 box-border"
+          className="w-4/5 mt-1 rounded-3xl pl-4 border border-black"
           type="password"
           value={credentials.password}
           name="password"
           onChange={OnChangeInp}
         ></input>
         {isLogin && <Navigate to={`/News/${country}`} state={{Country:country, Category:'none'}}/>}
-        <button onClick={SubmitCredential} className='bg-yellow-100 text-[#010326] h-[12%] w-[35%] rounded-3xl mt-5'>Login</button>
-        <p className="mt-3 text-red-600 text-xl italic hidden" ref={errmsg}>  </p>
-        <button className="w-4/5 mt-3 "><Link className="text-yellow-50 justify-center flex items-center" to='/auth/signup'> Don't have account? Sign Up <FaArrowRightLong className="ml-1" color="rgb(254 252 232)"/> </Link></button>
+        <button onClick={SubmitCredential} className='bg-[#010326] text-yellow-50 w-[35%] rounded-md mt-4'>Login</button>
+        <p className="mt-3 text-red-600 text-sm italic hidden" ref={errmsg}>  </p>
+        <button className="w-full mt-3 text-base"><Link className="justify-center flex items-center" to='/auth/signup'> Don't have account? Sign Up <FaArrowRightLong className="ml-1"/> </Link></button>
       </div>
     </div>
   );

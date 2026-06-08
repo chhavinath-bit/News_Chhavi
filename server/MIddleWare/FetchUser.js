@@ -1,6 +1,10 @@
 const User = require("../Models/UserSchema");
 const jwt = require('jsonwebtoken');
+<<<<<<< HEAD
 const secretKeyPass = process.env.SECRET_PASS;
+=======
+const secretKeyPass = "#poe067ahbdhabdhag6bsheNewsAPPWEbAPP";
+>>>>>>> master
 const FetchUser= async (req,res,next)=>{
     const token= req.header("Token");
     if(!token){
