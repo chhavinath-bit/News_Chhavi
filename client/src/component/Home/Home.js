@@ -8,10 +8,6 @@ export default function Home() {
   const { country, setCountry , } = useContext(NewsContext);
   const country_val= useRef("");
   function selectCountry(){
-<<<<<<< HEAD
-    
-=======
->>>>>>> master
     if(country_val.current.value==="Select Country"){
       
                 alert("please select a country");

@@ -124,74 +124,43 @@ export default function Sign() {
     <div
       className="h-11/12 w-full bg-cover flex flex-col items-center overflow-y-auto box-border py-5 "
     >
-<<<<<<< HEAD
       <div className="w-1/3 rounded-xl bg-[#021859] border border-[#021E73] flex flex-col items-center flex-shrink-0">
         <label className="w-3/4 mt-4 text-yellow-50"> Name</label>
         <input
           className="w-4/5 mt-1 h-[7.66vh] rounded-3xl pl-4 box-border"
-=======
-      <div className="w-1/5 h-max rounded-xl border-2 bg-[#F1F1F1] border-[#021E73] flex flex-col items-center pb-3 text-base">
-      <div className="w-full border-b border-[#021E73] text-lg py-2 px-2 mb-2 font-bold">Sign Up to News</div>
-        <label className="w-3/4 "> Name</label>
-        <input
-          className="w-4/5 mt-1 rounded-3xl pl-4 border border-black"
->>>>>>> master
           type="text"
           value={credentials.name}
           name="name"
           onChange={OnChangeInp}
         ></input>
-<<<<<<< HEAD
         <label className="w-3/4 mt-4 text-yellow-50">Email</label>
         <input
           className="w-4/5 mt-1 h-[7.66vh] rounded-3xl pl-4 box-border"
-=======
-        <label className="w-3/4 mt-3">Email</label>
-        <input
-          className="w-4/5 mt-1 rounded-3xl pl-4 border border-black"
->>>>>>> master
           type="text"
           value={credentials.email}
           name="email"
           onChange={OnChangeInp}
         ></input>
-<<<<<<< HEAD
         <label className="w-3/4 mt-4 text-yellow-50">Password</label>
         <input
           className="w-4/5 mt-1 h-[7.66vh] rounded-3xl pl-4 box-border"
-=======
-        <label className="w-3/4 mt-3">Password</label>
-        <input
-          className="w-4/5 mt-1 rounded-3xl pl-4 border border-black"
->>>>>>> master
           type="password"
           value={credentials.password}
           name="password"
           onChange={OnChangeInp}
         ></input>
 
-<<<<<<< HEAD
         <label className="w-3/4 mt-4 text-yellow-50">Confirm Password</label>
         <input
           className="w-4/5 h-[7.66vh] mt-1 rounded-3xl pl-4 box-border"
-=======
-        <label className="w-3/4 mt-3 ">Confirm Password</label>
-        <input
-          className="w-4/5 mt-1 rounded-3xl pl-4 border border-black"
->>>>>>> master
           type="password"
           value={credentials.confirm_password}
           name="confirm_password"
           onChange={OnChangeInp}
         ></input>
-<<<<<<< HEAD
         <label className="w-3/4 mt-4 text-yellow-50">Gender</label>
         <div className="w-4/5 h-[7.66vh] mt-1 rounded-3xl pl-4 box-border flex justify-around items-center">
-=======
-        <label className="w-3/4 mt-3 ">Gender</label>
-        <div className="w-4/5 mt-1 rounded-3xl pl-4 box-border flex justify-around items-center flex-col lg:flex-row">
->>>>>>> master
-          
+
           <input
             name="Gender"
             type="radio"
@@ -199,11 +168,7 @@ export default function Sign() {
             checked={credentials.Gender === "Male"}
             onChange={OnChangeInp}
           ></input>
-<<<<<<< HEAD
           <label className="text-yellow-50">Male</label>
-=======
-          <label className="">Male</label>
->>>>>>> master
           <input
             name="Gender"
             type="radio"
@@ -211,12 +176,8 @@ export default function Sign() {
             checked={credentials.Gender === "Female"}
             onChange={OnChangeInp}
           ></input>
-<<<<<<< HEAD
           <label className="text-yellow-50">Female</label>
-=======
-          <label className="">Female</label>
->>>>>>> master
-          
+
           <input
             name="Gender"
             type="radio"
@@ -224,19 +185,11 @@ export default function Sign() {
             checked={credentials.Gender === "Other"}
             onChange={OnChangeInp}
           ></input>
-<<<<<<< HEAD
           <label className="text-yellow-50">Other</label>
         </div>
         <label className="w-3/4 mt-4 text-yellow-50">Date of Birth</label>
         <input
           className="w-4/5 h-[7.66vh] mt-1 rounded-3xl px-4 box-border"
-=======
-          <label className="">Other</label>
-        </div>
-        <label className="w-3/4 mt-3">Date of Birth</label>
-        <input
-          className="w-4/5 mt-1 rounded-3xl px-4 border border-black"
->>>>>>> master
           type="date"
           value={credentials.DOB}
           name="DOB"
@@ -245,37 +198,22 @@ export default function Sign() {
         {isLogin && <Navigate to={`/auth/signup/uploadphoto`} />}
         <button
           onClick={SubmitCredential}
-<<<<<<< HEAD
           className="bg-yellow-100 text-[#010326] h-[8%] w-[35%] rounded-3xl mt-5"
         >
           Sign Up
         </button>
-       
+
         <p className="mt-3 text-red-600 text-xl italic hidden" ref={errmsg}>
           {" "}
         </p>
         <button className="w-4/5 mt-3 mb-3 ">
           <Link
             className="text-yellow-50 justify-center flex items-center"
-=======
-          className='bg-[#010326] text-yellow-50  w-[35%] rounded-md mt-4'>Sign Up</button>
-       
-        <p className="mt-3 text-red-600 text-sm italic hidden" ref={errmsg}>
-          {" "}
-        </p>
-        <button className="w-full mt-3 mb-3">
-          <Link
-            className=" justify-center flex items-center"
->>>>>>> master
             to="/auth/login"
           >
             {" "}
             Account already exists? log in{" "}
-<<<<<<< HEAD
             <FaArrowRightLong className="ml-1" color="rgb(254 252 232)" />{" "}
-=======
-            <FaArrowRightLong className="ml-1" />{" "}
->>>>>>> master
           </Link>
         </button>
       </div>

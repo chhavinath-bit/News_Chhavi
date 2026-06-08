@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 const dotenv= require('dotenv')
 dotenv.config()
 const express = require("express");
 const cors = require("cors");
-=======
-const express = require("express");
-const cors = require("cors");
-const dotenv= require('dotenv')
-dotenv.config()
->>>>>>> master
 const connectToDB = require("./db");
 const app = express();
 
@@ -25,8 +18,3 @@ app.use("/api/getnews", require("./Routes/getNews"));
 app.listen(port, () => {
   console.log(`app server is listening on ${port}`);
 });
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
